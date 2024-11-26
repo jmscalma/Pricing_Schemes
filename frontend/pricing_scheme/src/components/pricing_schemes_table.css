@@ -1,0 +1,45 @@
+.pricing_table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin: 20px 0;
+    font-family: Arial, sans-serif; 
+    font-size: 16px; 
+  }
+  
+  .pricing_table th,
+  .pricing_table td {
+    /* border: 1px solid #ddd;  */
+    padding: 12px; 
+    text-align: left; 
+  }
+  
+  .pricing_table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  /* .pricing_table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+   */
+  .pricing_table tbody tr {
+    background-color: #fff;
+  }
+  
+  .pricing_table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .pricing_table td:first-child {
+    width: 10%;
+    font-weight: bold;
+  }
+  
+  .pricing_table td:nth-child(2) {
+    width: 45%;
+  }
+  
+  .pricing_table td:nth-child(3) {
+    width: 45%;
+  }
+  

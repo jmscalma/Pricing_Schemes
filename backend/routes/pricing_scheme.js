@@ -8,15 +8,13 @@ const addPricingSchemeController = require('../controller/add_pricing_scheme')
 const getAllPricingSchemesController = require('../controller/get_all_pricing_schemes')
 const updatePricingSchemePositionController = require('../controller/update_pricing_scheme_position')
 const deletePricingSchemeController = require('../controller/delete_pricing_scheme')
-const updatePricingSchemeRateController = require('../controller/update_pricing_scheme_rate')
-const updatePricingSchemeTypeController = require('../controller/update_pricing_scheme_type')
+const updatePricingSchemeController = require('../controller/update_pricing_scheme')
 
 // models
 const addPricingSchemeSchema = require('../model/add_pricing_scheme')
 const updatePricingSchemePositionSchema = require('../model/update_pricing_scheme_position')
 const deletePricingSchemeSchema = require('../model/delete_pricing_scheme')
-const updatePricingSchemeRateSchema = require('../model/update_pricing_scheme_rate')
-const updatePricingSchemeTypeSchema = require('../model/update_pricing_scheme_type')
+const updatePricingSchemeSchema = require('../model/update_pricing_scheme')
 
 router.route('/pricing-scheme/add')
 .post(validator.validate({body: addPricingSchemeSchema}), (req, res) => {
@@ -38,14 +36,9 @@ router.route('/pricing-scheme/delete')
     deletePricingSchemeController(req, res);
 })
 
-router.route('/pricing-scheme/update/rate')
-.patch(validator.validate({query: updatePricingSchemeRateSchema}), (req, res) => {
-    updatePricingSchemeRateController(req, res);
-})
-
-router.route('/pricing-scheme/update/type')
-.patch(validator.validate({query: updatePricingSchemeTypeSchema}), (req, res) => {
-    updatePricingSchemeTypeController(req, res);
+router.route('/pricing-scheme/update')
+.patch(validator.validate({body: updatePricingSchemeSchema}), (req, res) => {
+    updatePricingSchemeController(req, res);
 })
 
 module.exports = router

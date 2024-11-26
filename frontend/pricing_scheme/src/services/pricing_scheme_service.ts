@@ -44,6 +44,55 @@ export const addPricingScheme = async (
     }
 };
 
+export const updatePricingScheme = async (
+    s_pricing_scheme_id: string,
+    pricing_scheme_type: string,
+    rate: string
+    
+  ) => {
+    if (!rate) {
+      alert('Text field should not be empty.');
+      return;
+    }
+
+    let pricing_type: string
+    let pricing_scheme_id: string
+
+    pricing_scheme_id =  s_pricing_scheme_id.replace('row-', '')
+
+    if(pricing_scheme_type === 'Variable-based'){
+        pricing_type = 'Variable'
+    }
+    else{
+        pricing_type = 'Fixed'
+    }
+    
+
+    const payload = {
+        pricing_scheme_id,
+        pricing_type,
+        rate
+    };
+  
+    try {
+      const response = await fetch('http://localhost:3000/pricing-scheme/update', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+  
+      if (response.ok) {
+        console.log('Data sent successfully!');
+      } else {
+        console.error('Error sending data:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+    }
+};
+
 
 export const getAllPricingSchemes = async () => {
     try {

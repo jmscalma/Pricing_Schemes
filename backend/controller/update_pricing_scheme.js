@@ -10,13 +10,13 @@ const pool = new Pool({
 });
 
 const handler = (req, res) => {
-    const { pricing_scheme_id, new_rate } = req.query;
+    const { pricing_scheme_id, pricing_type, rate } = req.body;
 
-    const query = `SELECT * FROM update_pricing_scheme_rate('${pricing_scheme_id}', ${new_rate});`
+    const query = `SELECT * FROM update_pricing_scheme('${pricing_scheme_id}', '${pricing_type}', '${rate}');`
 
     pool.query(query, (err, results) => {
         if(err){
-            res.status(500).send({message: 'Something went wrong.'})
+            res.status(500).send({message: 'Something went wrong.', err})
         }else{
             res.status(200).send({message: 'Rate updated successfully.', pricing_schemes: results.rows})
         }

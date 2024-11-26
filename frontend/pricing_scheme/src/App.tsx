@@ -10,6 +10,7 @@ import { getAllPricingSchemes, updatePricingSchemePosition, deletePricingScheme 
 
 interface Row {
   id: string;
+  isNew: boolean;
   dropdownValue: string;
   placeholder: string;
   showTextField: boolean;
@@ -19,12 +20,15 @@ interface Row {
 function App() {
   const [rows, setRows] = useState<Row[]>([]);
   const [pricingSchemes, setPricingSchemes] = useState<any[]>([]);
+  const [dialogVisible, setDialogVisible] = useState(false); 
+  const [dialogMessage, setDialogMessage] = useState(''); 
 
   const addPricingScheme = () => {
     setRows([
       ...rows,
       {
         id: `row-${Date.now()}`,
+        isNew: true,
         dropdownValue: '',
         placeholder: '',
         showTextField: false,
@@ -90,15 +94,23 @@ function App() {
       const response = await deletePricingScheme({ pricing_scheme_id });
 
       if (response.ok) {
+        setDialogMessage('Pricing scheme deleted successfully!');
+        setDialogVisible(true);
         await fetchPricingSchemes()
 
         const updatedRows = rows.filter((_, i) => i !== index);
         setRows(updatedRows);
         console.log('Row deleted successfully');
       } else {
+        
+        setDialogMessage('Pricing scheme deleted successfully!');
+        setDialogVisible(true);
         console.error('Failed to delete row:', response.statusText);
       }
     }catch(error){
+      
+      setDialogMessage('Pricing scheme deleted successfully!');
+      setDialogVisible(true);
       console.error('Error deleting row:', error);
     }
 
@@ -132,6 +144,11 @@ function App() {
   useEffect(() => {
     fetchPricingSchemes();
   }, []);
+
+  const closeDialog = () => {
+    setDialogVisible(false); 
+    setDialogMessage(''); 
+  };
   
   return (
     <div className="main_container">
@@ -158,6 +175,17 @@ function App() {
       </div>
 
       <PricingSchemesTable pricingSchemes={pricingSchemes} />
+
+      {dialogVisible && (
+        <div className="dialog_overlay">
+          <div className="dialog_box">
+            <p>{dialogMessage}</p>
+            <button onClick={closeDialog} className="dialog_close_button">
+              OK
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

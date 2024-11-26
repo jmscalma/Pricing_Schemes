@@ -1,4 +1,5 @@
 import React from 'react';
+import './pricing_schemes_table.css'
 
 interface PricingScheme {
   pricing_scheme_id: number;
