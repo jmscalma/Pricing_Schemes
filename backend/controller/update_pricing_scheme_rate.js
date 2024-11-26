@@ -9,14 +9,19 @@ const pool = new Pool({
     port: db_config.port
 });
 
-exports.getAllPricingSchemes = (req, res) => {
-    const query = `SELECT * FROM get_all_pricing_scheme();`
+const handler = (req, res) => {
+    const { pricing_scheme_id, new_rate } = req.query;
+
+    const query = `SELECT * FROM update_pricing_scheme_rate('${pricing_scheme_id}', ${new_rate});`
 
     pool.query(query, (err, results) => {
         if(err){
             res.status(500).send({message: 'Something went wrong.'})
         }else{
-            res.status(200).send({message: 'Pricing schemes fetched successfully.', pricing_schemes: results.rows})
+            res.status(200).send({message: 'Rate updated successfully.', pricing_schemes: results.rows})
         }
     })
+
 }
+
+module.exports = handler

@@ -10,15 +10,15 @@ const pool = new Pool({
 });
 
 const handler = (req, res) => {
-    const { pricing_type, rate, order_position } = req.body;
+    const pricing_scheme_id = req.query.pricing_scheme_id;
 
-    const query = `SELECT * FROM create_pricing_scheme('${pricing_type}', ${rate}, ${order_position});`
+    const query = `SELECT * FROM test_delete_pricing_scheme('${pricing_scheme_id}');`
 
     pool.query(query, (err, results) => {
         if(err){
-            res.status(500).send({message: 'Something went wrong.'})
+            res.status(500).send({message: 'Something went wrong.', err})
         }else{
-            res.status(200).send({message: 'Pricing scheme added successfully.', pricing_schemes: results.rows})
+            res.status(200).send({message: 'Pricing scheme deleted successfully.', pricing_schemes: results.rows})
         }
     })
 

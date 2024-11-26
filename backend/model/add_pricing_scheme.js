@@ -20,7 +20,7 @@ const addPricingSchemeSchema =
             type: "string",
             minLength: 1,
             maxLength: 3,
-            pattern: `^[0-2]$`
+            pattern: `^[0-9]+$`
         }
     }
 };

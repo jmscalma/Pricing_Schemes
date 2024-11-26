@@ -1,0 +1,39 @@
+.pricing_scheme_row{
+    display: flex;
+}
+
+.delete_row_btn{
+    background-color: #dc4448;
+    color: white;
+    margin: 10px;
+}
+
+.field_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    margin: 10px;
+    width: 54%;
+}
+  
+.field_wrapper select {
+    width: 300px;
+    height: 50px;
+    font-size: 16px;
+    padding: 5px; 
+    border-radius: 5px;
+}
+  
+.pricing_scheme_input {
+    width: 450px; 
+    height: 40px; 
+    font-size: 16px; 
+    padding: 5px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+}
+
+.drag_handle{
+    margin-top: 5px;
+    font-size: 36px;
+}
