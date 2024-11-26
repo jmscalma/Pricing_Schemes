@@ -12,7 +12,7 @@ const pool = new Pool({
 const handler = (req, res) => {
     const pricing_scheme_id = req.query.pricing_scheme_id;
 
-    const query = `SELECT * FROM test_delete_pricing_scheme('${pricing_scheme_id}');`
+    const query = `SELECT * FROM delete_pricing_scheme('${pricing_scheme_id}');`
 
     pool.query(query, (err, results) => {
         if(err){
