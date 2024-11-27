@@ -57,11 +57,11 @@ const SortableRow: React.FC<SortableRowProps> = ({
 
     try {
         // check if the row_id is in the list of pricing_scheme_id list from the database
-        console.log(existingPricingSchemes)
+        // console.log(existingPricingSchemes)
         let row_id = row.id.replace('row-', '')
     
-        console.log(row.id, row_id)
-        console.log('existingg', existingPricingSchemes)
+        // console.log(row.id, row_id)
+        // console.log('existingg', existingPricingSchemes)
       if (existingPricingSchemes.includes(row_id)) {
         await updatePricingScheme(row.id, row.dropdownValue, row.rate);
         setDialogMessage('Pricing scheme updated successfully!');

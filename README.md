@@ -19,12 +19,10 @@ for Backend
     npm install
 
 ## Running the project
-for Frontend
 1. Navigate to frontend directory
     cd frontend/pricing_scheme
     npm run dev
 
-for Backend
 2. Navigate to backend directory
     cd backend
     node index.js
@@ -46,6 +44,24 @@ To run this project, you will need to add the following environment variables to
 `PORT=sample_port`
 
 `HOST=sample_host`
+
+## Features
+
+- Add Pricing Scheme
+    - Select Pricing Scheme Type 
+    - Input rate in the Textfield
+    - It will automatically save once you remove the cursor focus in the texfield or click outside the Textfield
+
+- Update Pricing Scheme rate
+    - Select the Pricing Scheme to be updated
+    - Update the rate 
+    - It will automatically save once you remove the cursor focus in the texfield or click outside the Textfield
+
+- Delete Pricing Scheme
+    - Click the delete button for the pricing scheme to be deleted
+
+- Moveable Pricing Scheme order
+    - Each pricing scheme can be moved to indicate its position in the entire pricing scheme
 
 
 ## Technologies

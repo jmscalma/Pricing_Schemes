@@ -9,45 +9,6 @@ const pool = new Pool({
     port: db_config.port
 });
 
-// const handler = (req, res) => {
-//     const { pricing_scheme_id, new_order_position } = req.query;
-
-//     const query = `SELECT * FROM update_pricing_scheme_position('${pricing_scheme_id}', ${new_order_position});`
-
-//     pool.query(query, (err, results) => {
-//         if(err){
-//             res.status(500).send({message: 'Something went wrong.'})
-//         }else{
-//             res.status(200).send({message: 'Pricing scheme position updated successfully.', pricing_schemes: results.rows})
-//         }
-//     })
-
-// }
-
-// const handler = (req, res) => {
-//     // const { pricing_scheme_id, new_order_position } = req.query;
-//     const reordered_pricing_schemes = req.body.reordered_pricing_schemes;
-
-//     console.log(reordered_pricing_schemes)
-//     for(let i = 0; i < reordered_pricing_schemes.length; i++){
-
-//         let pricing_scheme_id = reordered_pricing_schemes[i].pricing_scheme_id;
-//         let new_order_position = reordered_pricing_schemes[i].new_order_position;
-
-//         const query = `SELECT * FROM update_pricing_scheme_position('${pricing_scheme_id}', ${new_order_position});`
-
-//         pool.query(query, (err, results) => {
-//             if(err){
-//                 res.status(500).send({message: 'Something went wrong.'})
-//             }else{
-//                 res.status(200).send({message: 'Pricing scheme position updated successfully.', pricing_schemes: results.rows})
-//             }
-//         })
-//     }
-
-
-// }
-
 const handler = async (req, res) => {
     const reordered_pricing_schemes = req.body.reordered_pricing_schemes;
   
