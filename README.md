@@ -29,14 +29,23 @@ for Backend
     cd backend
     node index.js
 
-3. Set up environment variables
-    DB_HOST=sample_db_host
-    DB_USER=sample_db_user
-    DB_PASSWORD=sample_db_password
-    DB_PORT=sample_db_port
-    DB_DATABASE=sample_database
-    PORT=sample_port
-    HOST=sample_host
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`DB_HOST=sample_db_host`
+
+`DB_USER=sample_db_user`
+
+`DB_PASSWORD=sample_db_password`
+
+`DB_PORT=sample_db_port`
+
+`DB_DATABASE=sample_database`
+
+`PORT=sample_port`
+
+`HOST=sample_host`
 
 
 ## Technologies
